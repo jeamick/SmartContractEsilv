@@ -1,5 +1,7 @@
-//Solidity Smart-contract in order to manage an Electronic Vote using Ethereum Blockchain
-// pragma solidity ^0.4.9;
+pragma solidity ^0.4.9;
+
+/// @title Solidity Smart-contract in order to manage an Electronic Vote using Ethereum Blockchains.
+/// @author Jean-Mickael Nounahon - <nounahon.j@gmail.com>
 
 Contract ElectronicVote {
 
@@ -63,7 +65,6 @@ mapping (address => bool) hasVoted; // If a registered voter has voted or not
     }
     
     function GetNumCandidate() constant returns(uint) {
-        
         return candidates.length;
     }
     
