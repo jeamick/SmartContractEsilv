@@ -1,5 +1,10 @@
 pragma solidity ^0.4.8;
 
+/// @title Solidity Smart-contract in order to manage a local money .
+/// @author Jean-Mickael Nounahon - <nounahon.j@gmail.com>
+/// @author 2 : Antoine Pailleau
+/// @author 3 : Etienne Moutaux
+
 contract Token {
     
     // ERC Base standard evolution of declaration 
