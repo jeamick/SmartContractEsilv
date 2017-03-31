@@ -5,11 +5,9 @@ pragma solidity ^0.4.8;
 /// @author 2 : Antoine Pailleau
 /// @author 3 : Etienne Moutaux
 
-contract Token{
-     //uint totalSupply;      //pas utilisée pour l'instant
+contract FidelityPoints{
      Client[] clients;      //tableau dans lequel on stocke les clients
-     //uint idMagasin;        //pas utilisé
-     //string nomMagasin;
+     
      uint initialAmount = 0;
      uint limiteCumul = 20;
     
@@ -23,18 +21,12 @@ contract Token{
     address public Admin;       //défini l'administrateur de la Blockchain
     
     mapping (address => Client) nbpoints;
-    //nbPointsParClient[msg.sender]= _initialAmount;
         
-     //function balances(address _owner) constant returns (uint256 balance);
-
-     /*function Token(uint256 _initialAmount, string _tokenName, string _id)
-     {
-         
-         //mapping (address => Client) = public clients ;
-         nbPointsParClient[msg.sender]= _initialAmount;
-         totalSupply = _initialAmount;
-     }*/
+     function balances(address _owner) constant returns (uint256 balance);
      
+    /// @param _owner Add a client to the fidelity application
+    /// @return void function
+    
      function AjoutClient(string _name)
      {
          for(uint i=0;i<clients.length; i++)    //on parcours tous les clients
@@ -51,6 +43,9 @@ contract Token{
             }
          }
      }
+     
+     /// @param _owner AttributePoints
+    /// @return void function
      function AttribuerPoints(address _id)
      {
          //uint i=0;
@@ -69,6 +64,10 @@ contract Token{
              }
          }
      }
+     
+     /// @param _owner Exchange some points in presents
+    /// @return void function
+    
      function PointsExchange(address _id, uint _quantity)
      {
          uint i;
@@ -86,7 +85,7 @@ contract Token{
             }
             else{
                 throw;
-                //MessageBox.Show("le compte auquel vous voulez attribuer des points n'existe pas");
+               
             }
          }
          if ((emetteur == recepteur)||(clients[i].nbpoints<_quantity)){            //on ne peut pas s'envoyer des points à soi même
@@ -98,6 +97,11 @@ contract Token{
             clients[j].nbpoints += _quantity;    //recepteur gagne la quantité renseignée par
          }
      }
+     
+     /// @param _owner Spending loyality points
+    /// @return void function
+    
+    
      function PointSpend(uint _quantity){
          for(uint i=0; i<clients.length; i++){       //on parcours tous les clients
              if (clients[i].id == msg.sender){ 
