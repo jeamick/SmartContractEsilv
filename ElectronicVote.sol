@@ -2,6 +2,8 @@ pragma solidity ^0.4.9;
 
 /// @title Solidity Smart-contract in order to manage an Electronic Vote using Ethereum Blockchain.
 /// @author Jean-Mickael Nounahon - <nounahon.j@gmail.com>
+/// @author 2 : Antoine Pailleau
+/// @author 3 : Etienne Moutaux
 
 Contract ElectronicVoteESILV {
 
