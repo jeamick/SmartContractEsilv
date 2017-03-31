@@ -3,20 +3,21 @@ pragma solidity ^0.4.9;
 /// @title Solidity Smart-contract in order to manage an Electronic Vote using Ethereum Blockchain.
 /// @author Jean-Mickael Nounahon - <nounahon.j@gmail.com>
 
-Contract ElectronicVote {
+Contract ElectronicVoteESILV {
 
-
-address Launcher; // Launch the vote 
 uint electionEndTime; 
 string[] candidates; // Registered candidates
 mapping (string => uint) votes; // Candidate ID to number of votes
 mapping (address => bool) voters; // Registered voters
 mapping (address => bool) hasVoted; // If a registered voter has voted or not
     
+     /// @param _owner The address from which the balance will be retrieved
+    ///
     function Election(){
         electionAuthority = msg.sender;
     }
-    
+     /// @param _owner Only the authority launch the contract
+    ///
     modifier OnlyElectionAuthorityCanLaunchVote() {
         if (msg.sender != electionAuthority) throw;
         _;
@@ -36,13 +37,16 @@ mapping (address => bool) hasVoted; // If a registered voter has voted or not
         if (electionEndTime == 0 || electionEndTime > block.timestamp) throw;
         _;
     }
-    
+     /// @param _owner The duration ( uint ) of an election
+    /// @return void
     function CommencerElection(uint duration)
         only_election_authority
     {
         electionEndTime = block.timestamp + duration;
     }
-  
+    
+   /// @param _owner the id of the people you vote to
+   /// @return
     function EnregisterCandidat(string id)
         only_election_authority
     {
@@ -64,10 +68,15 @@ mapping (address => bool) hasVoted; // If a registered voter has voted or not
         hasVoted[msg.sender] = true;
     }
     
+     /// @param _owner void
+    /// @return The number of candidate
     function GetNumCandidate() constant returns(uint) {
         return candidates.length;
     }
     
+     /// @param _owner The number of the Candidate
+    /// @return his name and the number of voters for him
+   
     function GetCandidate(uint i)
         constant returns(string _candidate, uint _votes)
     {
