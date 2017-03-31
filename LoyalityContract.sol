@@ -1,5 +1,10 @@
 pragma solidity ^0.4.8;
 
+/// @title Solidity Smart-contract in order to manage some loyality points  .
+/// @author Jean-Mickael Nounahon - <nounahon.j@gmail.com>
+/// @author 2 : Antoine Pailleau
+/// @author 3 : Etienne Moutaux
+
 contract Token{
      //uint totalSupply;      //pas utilisée pour l'instant
      Client[] clients;      //tableau dans lequel on stocke les clients
